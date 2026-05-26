@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Connector Hub | Owned Apps, Agents & Connectors</title>
+  <meta name="description" content="A free, self-hosted command center for your apps, AI agents, connectors, and automations." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top"><span class="brand-mark">CH</span><span>Connector Hub</span></a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="#connectors">Connectors</a>
+      <a href="#security">Security</a>
+      <a href="#publish">Publish Free</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Free • Owned • No builder lock-in</p>
+        <h1>One website for your apps, AI agents, and connectors.</h1>
+        <p class="lead">Connector Hub is a standalone website you can host on your own free hosting. Keep your tools organized, track agents, store connector setup notes, and export backups without paying for a locked platform.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#dashboard">Open Dashboard</a>
+          <a class="button secondary" href="#publish">Publish It Free</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="card-top"><span class="pulse"></span><strong>Owner Console</strong></div>
+        <div class="metric-grid">
+          <div><b id="metricApps">0</b><span>Apps</span></div>
+          <div><b id="metricAgents">0</b><span>Agents</span></div>
+          <div><b id="metricConnectors">0</b><span>Connectors</span></div>
+        </div>
+        <p class="mini">This free version stores data locally in your browser. Real login/database can be added later.</p>
+      </aside>
+    </section>
+
+    <section class="section" id="apps">
+      <p class="eyebrow">Apps & Agents</p>
+      <h2>Bring everything into one hub.</h2>
+      <div class="cards">
+        <article><h3>Connector App</h3><p>Track APIs, auth type, endpoints, setup notes, and simulated connection status.</p></article>
+        <article><h3>Website App</h3><p>Manage your public website, publish checklist, domain notes, and pages.</p></article>
+        <article><h3>AI Agent Registry</h3><p>Document every AI agent, owner, purpose, risk level, and deployment location.</p></article>
+      </div>
+    </section>
+
+    <section class="section split" id="connectors">
+      <div>
+        <p class="eyebrow">Connector Builder</p>
+        <h2>Start free, then upgrade only when you choose.</h2>
+        <p>No paid APIs. No paid database. No paid auth. The first version is a static owned dashboard. When you’re ready, connect your own backend and domain.</p>
+      </div>
+      <div class="feature-list">
+        <div>Local saved records</div>
+        <div>Exportable JSON backup</div>
+        <div>Mobile-friendly UI</div>
+        <div>Security checklist</div>
+      </div>
+    </section>
+
+    <section class="app-shell" id="dashboard">
+      <div class="app-header">
+        <div>
+          <p class="eyebrow">Live Local Dashboard</p>
+          <h2>Your Owned Hub</h2>
+        </div>
+        <button class="button secondary" id="exportBtn">Export Backup</button>
+      </div>
+
+      <div class="dashboard">
+        <form id="appForm" class="panel">
+          <h3>Add App</h3>
+          <label>App Name <input id="appName" required placeholder="Connector Hub, Client Portal..." /></label>
+          <label>App Type
+            <select id="appType">
+              <option>Website</option><option>Connector</option><option>Dashboard</option><option>Automation</option><option>Other</option>
+            </select>
+          </label>
+          <label>URL or Location <input id="appUrl" placeholder="https://yourdomain.com or local notes" /></label>
+          <label>Notes <textarea id="appNotes" placeholder="What it does, where it lives, next steps..."></textarea></label>
+          <button class="button primary" type="submit">Save App</button>
+        </form>
+
+        <section class="panel">
+          <div class="panel-row"><h3>Apps</h3><button class="small" id="seedAppsBtn" type="button">Load Examples</button></div>
+          <div id="appList" class="item-list empty">No apps yet. Add one to begin.</div>
+        </section>
+      </div>
+
+      <div class="dashboard">
+        <form id="agentForm" class="panel">
+          <h3>Add AI Agent</h3>
+          <label>Agent Name <input id="agentName" required placeholder="Security Agent, Ops Agent..." /></label>
+          <label>Purpose <input id="agentPurpose" required placeholder="What this agent does" /></label>
+          <label>Risk Level
+            <select id="agentRisk"><option>Low</option><option>Medium</option><option>High</option></select>
+          </label>
+          <button class="button primary" type="submit">Save Agent</button>
+        </form>
+
+        <section class="panel">
+          <div class="panel-row"><h3>AI Agents</h3><button class="small" id="seedAgentsBtn" type="button">Load Examples</button></div>
+          <div id="agentList" class="item-list empty">No agents yet. Add your first agent.</div>
+        </section>
+      </div>
+
+      <div class="dashboard">
+        <form id="connectorForm" class="panel">
+          <h3>Create Connector</h3>
+          <label>Connector Name <input id="connectorName" required placeholder="Stripe, Gmail, Slack..." /></label>
+          <label>Base API URL <input id="baseUrl" required placeholder="https://api.example.com" /></label>
+          <label>Auth Type
+            <select id="authType"><option>API Key</option><option>Bearer Token</option><option>OAuth</option><option>No Auth</option></select>
+          </label>
+          <label>Test Endpoint <input id="endpoint" placeholder="/health or /v1/status" /></label>
+          <label>Notes <textarea id="notes" placeholder="Setup steps, owner, risks..."></textarea></label>
+          <button class="button primary" type="submit">Save Connector</button>
+        </form>
+
+        <section class="panel">
+          <div class="panel-row"><h3>Connectors</h3><button class="small" id="seedConnectorsBtn" type="button">Load Examples</button></div>
+          <div id="connectorList" class="item-list empty">No connectors yet. Add one to begin.</div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section security" id="security">
+      <p class="eyebrow">Security</p>
+      <h2>Good security from day one.</h2>
+      <ul>
+        <li>Do not paste production API secrets into this free static version.</li>
+        <li>Use placeholders for keys until a private backend is added.</li>
+        <li>Use HTTPS hosting only.</li>
+        <li>Add password/login protection before storing private team data.</li>
+        <li>Keep exported backups somewhere safe.</li>
+      </ul>
+    </section>
+
+    <section class="section deploy" id="publish">
+      <p class="eyebrow">Publish Free</p>
+      <h2>Host it where you control it.</h2>
+      <div class="steps">
+        <div><b>1</b><span>Unzip this package.</span></div>
+        <div><b>2</b><span>Upload index.html, styles.css, and app.js to free hosting.</span></div>
+        <div><b>3</b><span>Use GitHub Pages, Cloudflare Pages, Netlify free, Vercel free, or your own cPanel.</span></div>
+        <div><b>4</b><span>Point your domain when you’re ready.</span></div>
+      </div>
+      <p class="mini">This is a standalone static site. No backend bill. No database bill. No builder subscription.</p>
+    </section>
+  </main>
+
+  <footer><strong>Connector Hub</strong><span>Owned apps, agents, connectors, and automations.</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
